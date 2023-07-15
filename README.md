@@ -16,6 +16,8 @@
 
 아마도 innerHtml을 사용했다면 훨씬 쉽게 작성 할 수 있었을 거에요.
 
+물론 createElement를 사용하면 dom 자체에 바인딩 하는것이기 때문에 innerHtml보다 좋은 것은 알고 있으나, 이런 방법도 있다는건 알려주고 싶었어요
+
 ```javascript
 let todos = ['두부 사오기', '과자 먹기', '티비 보기'];
 
