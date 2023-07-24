@@ -1,0 +1,69 @@
+const form = document.querySelector('form');
+const input = document.querySelector('input');
+const ul = document.querySelector('ul');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  if (input.value !== '') {
+    const li = document.createElement('li');
+    const delBtn = document.createElement('button');
+    li.innerText = input.value; 
+
+    const btn = document.createElement('button');
+    btn.innerHTML = '☑️'; // Use the checkbox symbol
+    
+    btn.addEventListener('click', () => {
+      li.classList.toggle('completed'); // Toggle 'completed' class on the li element
+    });
+
+    li.insertBefore(btn, li.firstChild);
+
+    const emoji = "🗑️";
+    const span = document.createElement('span');
+    span.innerText = emoji;
+    delBtn.innerHTML = "";
+    delBtn.appendChild(span);
+    li.appendChild(delBtn);
+    ul.appendChild(li);
+
+    input.value = '';
+
+    delBtn.addEventListener('click', () => {
+      li.remove();
+      reindex();
+    });
+  }
+});
+
+const clearBtn = document.createElement('button');
+clearBtn.innerText = 'Clear All';
+clearBtn.classList.add('clear-button');
+
+clearBtn.addEventListener('click', () => {
+  while (ul.firstChild) {
+    ul.removeChild(ul.firstChild);
+  }
+});
+const container = document.querySelector('.container');
+container.appendChild(clearBtn);
+
+function reindex() {
+  const lis = ul.querySelectorAll('li'); //ul 요소 내의 li 선택
+
+  lis.forEach((li) => {
+
+    const existingDelBtn = li.querySelector('button');
+    if (!existingDelBtn) { //버튼 존재않는다면...
+      const delBtn = document.createElement('button'); //버튼 만듦
+      delBtn.addEventListener('click', (event) => {
+        event.stopPropagation(); //매서드 호출, 부모로 전달 방지
+        li.remove();
+        reindex();
+      });
+
+      li.appendChild(delBtn); //생성한 del버튼 li요소에 추가
+    }
+    
+  });
+}
