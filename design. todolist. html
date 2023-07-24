@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+  <head> 
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>todolist</title>
+  </head>
+  <body>
+    <form>
+      <div class="container"> 
+        <h1 class="title">Todo List</h1> <!-- todolist 타이틀을 맨 위에 추가 -->
+        <input type="text" placeholder="Add new todo list"> 
+        <button class="button"></button>
+        <ul> </ul>
+
+      </div>
+    </form>
+
+    
+
+    <script src="./todo.js"></script>
+  </body>
+</html>
